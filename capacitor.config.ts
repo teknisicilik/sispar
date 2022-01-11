@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.teknisicilik.sispar',
+  appId: 'com.bangjeko.sispar',
   appName: 'Sispar Wifi.Id',
   webDir: 'www',
   bundledWebRuntime: false,

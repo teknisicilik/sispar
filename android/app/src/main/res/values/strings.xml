@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Sispar Wifi.Id</string>
+    <string name="title_activity_main">Sispar Wifi.Id</string>
+    <string name="package_name">com.bangjeko.sispar</string>
+    <string name="custom_url_scheme">com.bangjeko.sispar</string>
+</resources>

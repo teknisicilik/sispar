@@ -21,7 +21,7 @@
     <ion-item>
       <ion-label>Pilih Gejala Kerusakan</ion-label>
       <ionic-selectable class="select-gejala" [(ngModel)]="selectedGejala" [items]="gejalas" itemValueField="id"
-        itemTextField="name" [canSearch]="true" [isMultiple]="true" placeholder="pilih gejala"
+        itemTextField="nama_gejala" [canSearch]="true" [isMultiple]="true" placeholder="pilih gejala"
         (onChange)="gejalaChange($event)">
       </ionic-selectable>
       <ion-icon slot="end" name="search-outline"></ion-icon>
@@ -30,7 +30,7 @@
     <ion-list>
       <ion-item *ngFor="let sg of selectedGejala;let i = index" lines="none" class="item-selected">
         <ion-label>
-          <p class="ion-no-margin ion-text-wrap">{{sg?.name}}</p>
+          <p class="ion-no-margin ion-text-wrap">{{sg?.nama_gejala}}</p>
         </ion-label>
         <ion-icon name="close-circle-outline" slot="end" color="danger" (click)="removeGejala(i)"></ion-icon>
       </ion-item>
@@ -44,7 +44,7 @@
         <ion-card-title>Kerusakan</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        Modem Mati atau Rusak
+        {{analisa_data?.kerusakan ? analisa_data?.kerusakan : 'Tidak diketahui'}}
       </ion-card-content>
     </ion-card>
 
@@ -53,10 +53,7 @@
         <ion-card-title>Solusi</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        Silahkan periksa apakah adapter sudah terpasang ke listrik, jika sudah terpasang dan belum juga bisa silahkan
-        laporkan karena terindikasi modem telah rusak
-
-        - Terimakasih
+        {{analisa_data?.solusi}}
       </ion-card-content>
     </ion-card>
 
@@ -66,7 +63,7 @@
       </ion-card-header>
       <ion-card-content>
         <h1>
-          0.4
+          {{analisa_data?.koefisien | number: '1.2-2'}}
         </h1>
       </ion-card-content>
     </ion-card>

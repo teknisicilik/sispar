@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { StatusBar, Style } from '@capacitor/status-bar';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,9 @@ import { NavController } from '@ionic/angular';
 export class AppComponent {
   constructor(public navCtrl: NavController) {
     // this.cekAuth();
+    StatusBar.setBackgroundColor({
+      color: '#e73328',
+    });
   }
 
   cekAuth() {

@@ -4,10 +4,7 @@
 
 export const environment = {
   production: false,
-  // BASE_URL: 'http://localhost/katalog_obat/api/',
-
-  // prod
-  BASE_URL: 'https://katalogobat.teknisicilik.com/api/',
+  BASE_URL: 'https://bangjeko.com/api/',
 };
 
 /*

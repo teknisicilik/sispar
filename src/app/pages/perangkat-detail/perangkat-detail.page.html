@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detail Perangkat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Nama Perangkat </ion-card-subtitle>
+      <ion-card-title>{{data?.nama_perangkat}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-img [src]="data?.img_perangkat?.url"></ion-img>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

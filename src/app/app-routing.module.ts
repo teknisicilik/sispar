@@ -14,7 +14,15 @@ const routes: Routes = [
   },
   {
     path: 'analisa',
-    loadChildren: () => import('./pages/analisa/analisa.module').then( m => m.AnalisaPageModule)
+    loadChildren: () =>
+      import('./pages/analisa/analisa.module').then((m) => m.AnalisaPageModule),
+  },
+  {
+    path: 'perangkat-detail/:id',
+    loadChildren: () =>
+      import('./pages/perangkat-detail/perangkat-detail.module').then(
+        (m) => m.PerangkatDetailPageModule
+      ),
   },
 ];
 @NgModule({
