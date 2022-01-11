@@ -1,0 +1,104 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Analisa Kerusakan</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="lisght" *ngIf="analised">
+    <ion-title class="ion-text-center">Hasil Analisa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="loading" class="loading-full-page">
+    <ion-spinner color="primary" class="spinner-load-data"></ion-spinner>
+    <p>Menganalisa kerusakan...</p>
+  </div>
+
+  <ng-container *ngIf="!analised">
+    <ion-item>
+      <ion-label>Pilih Gejala Kerusakan</ion-label>
+      <ionic-selectable class="select-gejala" [(ngModel)]="selectedGejala" [items]="gejalas" itemValueField="id"
+        itemTextField="name" [canSearch]="true" [isMultiple]="true" placeholder="pilih gejala"
+        (onChange)="gejalaChange($event)">
+      </ionic-selectable>
+      <ion-icon slot="end" name="search-outline"></ion-icon>
+    </ion-item>
+
+    <ion-list>
+      <ion-item *ngFor="let sg of selectedGejala;let i = index" lines="none" class="item-selected">
+        <ion-label>
+          <p class="ion-no-margin ion-text-wrap">{{sg?.name}}</p>
+        </ion-label>
+        <ion-icon name="close-circle-outline" slot="end" color="danger" (click)="removeGejala(i)"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+
+  <ng-container *ngIf="analised">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Kerusakan</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Modem Mati atau Rusak
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Solusi</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Silahkan periksa apakah adapter sudah terpasang ke listrik, jika sudah terpasang dan belum juga bisa silahkan
+        laporkan karena terindikasi modem telah rusak
+
+        - Terimakasih
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Koefisien</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h1>
+          0.4
+        </h1>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar *ngIf="!analised">
+    <ion-row>
+      <ion-col size="12">
+        <ion-button [disabled]="selectedGejala?.length == 0 || loading" (click)="onAnalis()" expand="block"
+          fill="outline" color="primary">
+          Analisa Sekarang
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+
+  <ion-toolbar *ngIf="analised">
+    <ion-row>
+      <ion-col size="6">
+        <ion-button (click)="onReAnalis()" expand="block" fill="outline" color="primary">
+          Analisa Ulang
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button (click)="onDone()" expand="block" fill="solid" color="success">
+          Selesai
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </ion-toolbar>
+</ion-footer>
